@@ -9,15 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.stage.Stage;
 import javafx.scene.control.TextField;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import javafx.stage.Stage;
+import org.json.JSONObject;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
-
 
 import static client.models.Main.*;
 
@@ -36,7 +33,7 @@ public class LoginController {
         String username = loginUsername_textField.getText();
         String password = loginPass_passwordField.getText();
         loginStatus_label.setVisible(false);
-        request.login(username,password);
+        request.login(username, password);
         getResponse(actionEvent);
 
     }
@@ -52,36 +49,44 @@ public class LoginController {
 
     }
 
-    public void goToHome(ActionEvent actionEvent) {
+    @FXML
+    public void goToHome_action(ActionEvent actionEvent) {
         try {
-
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../../home/Home.fxml")));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("../../home/HomeStyle.css")).toExternalForm());
             stage.setScene(scene);
             stage.show();
-
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
 
-    private void getResponse(ActionEvent actionEvent){
+    private void getResponse(ActionEvent actionEvent) {
         JSONObject response = read();
-        if(response.get("responseType").equals("/login_accepted")){
-            loginAccepted(response,actionEvent);
-        }
-        else loginRejected();
+        if (response.get("responseType").equals("/login_accepted")) {
+            loginAccepted(response, actionEvent);
+        } else loginRejected();
 
     }
 
-    private void loginAccepted(JSONObject response,ActionEvent actionEvent) {
+    private void loginAccepted(JSONObject response, ActionEvent actionEvent) {
 
-        userAccount = new UserAccount((String) response.get("username"), (String) response.get("password"));
-        goToHome(actionEvent);
+//
+//        userAccount = new UserAccount((String) response.get("username"), (String) response.get("password"));
+//        goToHome(actionEvent);
+
+        Object username = response.get("username");
+        Object password = response.get("password");
+
+        if (username != null && password != null) {
+            userAccount = new UserAccount(username.toString(), password.toString());
+            userAccount.writeRememberMe();
+            goToHome_action(actionEvent);
+        }
     }
 
     private void loginRejected() {

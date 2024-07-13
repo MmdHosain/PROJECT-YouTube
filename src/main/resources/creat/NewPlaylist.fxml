@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="newPlaylist_anchorPane" maxHeight="300.0" maxWidth="450.0" minHeight="300.0" minWidth="450.0" prefHeight="300.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controllers.NewPlaylistController">
+   <children>
+      <Label layoutX="30.0" layoutY="20.0" text="Create new playlist">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <ScrollPane fx:id="newPlaylist_scrollPane" fitToWidth="true" layoutX="31.2" layoutY="57.0" prefHeight="206.0" prefWidth="410.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0">
+         <content>
+            <VBox prefWidth="364.0" spacing="20.0">
+               <children>
+                  <Label text="Title (required)">
+                     <VBox.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </VBox.margin></Label>
+                  <TextArea fx:id="title_textArea" prefHeight="57.0" prefWidth="385.0">
+                     <VBox.margin>
+                        <Insets top="-40.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <Label text="Description">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin></Label>
+                  <TextArea fx:id="description_textArea" prefHeight="146.0" prefWidth="385.0">
+                     <VBox.margin>
+                        <Insets top="-40.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <AnchorPane>
+                     <children>
+                        <ComboBox fx:id="pripub_comboBox" maxHeight="40.0" maxWidth="185.0" minHeight="40.0" minWidth="185.0" prefHeight="40.0" prefWidth="185.0" promptText="Visibility" />
+                        <Button fx:id="creat_button" layoutX="283.0" maxHeight="40.0" maxWidth="70.0" minHeight="40.0" minWidth="70.0" mnemonicParsing="false" onAction="#creat_action" prefHeight="40.0" prefWidth="70.0" text="Creat" AnchorPane.rightAnchor="10.0">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <Button fx:id="closeIcon_button" layoutX="400.0" layoutY="30.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#close_action" prefHeight="10.0" prefWidth="10.0" text="Button" />
+   </children>
+</AnchorPane>

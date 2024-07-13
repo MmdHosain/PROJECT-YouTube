@@ -1,0 +1,35 @@
+#thumbnail_button{
+    -fx-background-radius: 0;
+}
+#thumbnail_button:hover{
+    -fx-border-width: 9;
+    -fx-border-radius: 5;
+    -fx-border-color: #a1a1a1;
+    -fx-background-color: transparent;
+    -fx-border-insets: -9;
+}
+#otherIcon_button{
+    -fx-shape: "M8,20c3.3,0,6,2.7,6,6s-2.7,6-6,6s-6-2.7-6-6S4.7,20,8,20z M26,20c3.3,0,6,2.7,6,6s-2.7,6-6,6s-6-2.7-6-6 S22.7,20,26,20z M44,20c3.3,0,6,2.7,6,6s-2.7,6-6,6s-6-2.7-6-6S40.7,20,44,20z";
+    -fx-background-color: #505050;
+}
+#other_button{
+    -fx-background-color: transparent;
+    -fx-border-radius: 30;
+    -fx-border-width: 0.5;
+    -fx-border-color: #505050;
+    -fx-background-radius: 30;
+}
+#other_button:hover{
+    -fx-background-color: #cccccc;
+    -fx-border-radius: 30;
+    -fx-border-width: 0.5;
+    -fx-border-color: black;
+    -fx-background-radius: 30;
+}
+#other_vBox {
+    -fx-background-color: #e4e4e4;
+    -fx-background-radius: 10;
+    -fx-border-width: 0.2;
+    -fx-border-color: black;
+    -fx-border-radius: 10;
+}

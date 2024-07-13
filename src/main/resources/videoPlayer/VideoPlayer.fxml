@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="videoPlayer_boarderPane" minHeight="540.0" minWidth="960.0" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controllers.VideoPlayerController">
+   <center>
+      <ScrollPane fx:id="videoPlayer_scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" minHeight="480.0" minWidth="905.0" prefHeight="480.0" prefWidth="905.0">
+         <content>
+            <HBox spacing="10.0">
+               <children>
+                  <VBox fx:id="videoPlayer_vBox" spacing="20.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox fx:id="video_vBox">
+                           <children>
+                              <MediaView fx:id="video_mediaView" fitHeight="300.0" fitWidth="471.0" onMouseClicked="#playPauseVide_action" onMouseMoved="#showVideoController_action">
+                                 <VBox.margin>
+                                    <Insets bottom="-71.0" />
+                                 </VBox.margin>
+                              </MediaView>
+                              <VBox fx:id="videoController_vBox" maxHeight="70.0" minHeight="70.0" onMouseMoved="#showVideoController_action" prefHeight="70.0" spacing="20.0">
+                                 <children>
+                                    <Slider fx:id="videoTimeline_slider" prefHeight="14.0" prefWidth="528.0">
+                                       <padding>
+                                          <Insets left="5.0" right="5.0" />
+                                       </padding>
+                                    </Slider>
+                                    <GridPane prefHeight="30.0" prefWidth="579.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="94.39999389648438" minWidth="10.0" percentWidth="0.0" prefWidth="40.0" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="139.20000839233398" minWidth="10.0" prefWidth="40.0" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="177.60001373291016" minWidth="10.0" prefWidth="30.0" />
+                                          <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="177.60001373291016" minWidth="10.0" prefWidth="55.5999755859375" />
+                                          <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="221.60006713867188" minWidth="8.599984741210932" prefWidth="102.99996337890624" />
+                                          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                                          <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="116.80000000000001" minWidth="10.0" prefWidth="40.0" />
+                                        <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="95.20001220703125" minWidth="10.0" prefWidth="40.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Button fx:id="next_button" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" GridPane.columnIndex="1" />
+                                          <Button fx:id="mute_button" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" onAction="#muteUnmute_action" prefHeight="15.0" prefWidth="15.0" GridPane.columnIndex="2" />
+                                          <Button fx:id="playAndPause_button" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" onAction="#playPauseVide_action" prefHeight="15.0" prefWidth="15.0" />
+                                          <Label fx:id="duration_label" alignment="CENTER" text="00:00 / 00:00" textAlignment="CENTER" textFill="#f2f2f2" GridPane.columnIndex="4" />
+                                          <Slider fx:id="volume_slider" GridPane.columnIndex="3" />
+                                          <Button fx:id="speed_button" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#speed_action" prefHeight="18.0" prefWidth="18.0" GridPane.columnIndex="6" />
+                                          <Button fx:id="fullScream_button" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" onAction="#fullScreen_action" prefHeight="15.0" prefWidth="15.0" GridPane.columnIndex="7" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" />
+                                       </VBox.margin>
+                                    </GridPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <Label fx:id="video_lable" text="Label">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <GridPane alignment="CENTER" prefHeight="50.0" prefWidth="507.0">
+                          <columnConstraints>
+                              <ColumnConstraints halignment="LEFT" hgrow="NEVER" minWidth="10.0" />
+                              <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="150.0" minWidth="10.0" />
+                              <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="160.0" minWidth="10.0" />
+                              <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                              <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="NEVER" minWidth="10.0" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="160.0" minWidth="10.0" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="10.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Circle fx:id="videoProf_circle" fill="DODGERBLUE" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Button fx:id="subscribe_button" maxHeight="35.0" maxWidth="1.7976931348623157E308" minHeight="35.0" mnemonicParsing="false" onAction="#on_subscribe" prefHeight="35.0" text="subscribe" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Button fx:id="like_button" alignment="BASELINE_LEFT" maxHeight="35.0" maxWidth="81.0" minHeight="35.0" minWidth="81.0" mnemonicParsing="false" onAction="#on_like" prefHeight="35.0" prefWidth="81.0" text="20k" GridPane.columnIndex="4">
+                                 <graphic>
+                                    <Button fx:id="likeIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="Button" />
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets right="49.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font></Button>
+                              <Button fx:id="dislike_button" alignment="BASELINE_RIGHT" contentDisplay="RIGHT" maxHeight="35.0" maxWidth="50.0" minHeight="35.0" minWidth="50.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="50.0" text="  " GridPane.columnIndex="4">
+                                 <graphic>
+                                    <Button fx:id="dislikeIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" onAction="#on_dislike" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets left="80.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Button fx:id="share_button" alignment="BASELINE_CENTER" maxHeight="35.0" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" text="share" GridPane.columnIndex="5">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <Button fx:id="shareIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="Button" />
+                                 </graphic>
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin></Button>
+                              <Label fx:id="channelName_label" maxWidth="1.7976931348623157E308" text="Channel name" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets bottom="25.0" left="10.0" />
+                                 </GridPane.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="totalSubscribers_label" maxWidth="1.7976931348623157E308" text="20k subscribers" GridPane.columnIndex="1">
+                                 <GridPane.margin>
+                                    <Insets left="10.0" top="25.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Line endX="30.0" rotate="90.0" GridPane.columnIndex="4">
+                                 <GridPane.margin>
+                                    <Insets right="34.0" />
+                                 </GridPane.margin>
+                              </Line>
+                              <Pane fx:id="other_pane" prefHeight="14.0" prefWidth="40.0" visible="false" GridPane.columnIndex="6">
+                                 <children>
+                                    <CubicCurve controlX1="340.8000183105469" controlX2="345.6000061035156" controlY1="257.5999450683594" controlY2="122.13330841064453" disable="true" endX="289.73333740234375" endY="106.86661529541016" fill="#e4e4e4" layoutX="-307.0" layoutY="-144.0" startX="289.73333740234375" startY="-4.066703796386719" stroke="BLACK" strokeWidth="0.2" />
+                                    <VBox fx:id="other_vBox" layoutX="-137.0" layoutY="-163.0" prefWidth="120.0" spacing="10.0">
+                                       <children>
+                                          <Button alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#download_action" text="  Download">
+                                             <graphic>
+                                                <Button fx:id="downloadIcon_button" maxHeight="16.0" maxWidth="12.0" minHeight="16.0" minWidth="12.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="12.0" text="Button" />
+                                             </graphic>
+                                          </Button>
+                                          <Button alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#clip_action" text="  Clip">
+                                             <graphic>
+                                                <Button fx:id="clipIcon_button" maxHeight="16.0" maxWidth="10.0" minHeight="16.0" minWidth="10.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="10.0" text="clipIcon_button" />
+                                             </graphic>
+                                          </Button>
+                                          <Button alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#save_action" text="  Save">
+                                             <graphic>
+                                                <Button fx:id="saveIcon_button" maxHeight="16.0" maxWidth="12.0" minHeight="16.0" minWidth="12.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="12.0" text="Button" />
+                                             </graphic>
+                                          </Button>
+                                          <Button alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#report_action" text="  Report">
+                                             <graphic>
+                                                <Button fx:id="reportIcon_button" maxHeight="16.0" maxWidth="12.0" minHeight="16.0" minWidth="12.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="12.0" text="Button" />
+                                             </graphic>
+                                          </Button>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </Pane>
+                              <Button fx:id="other_button" maxHeight="35.0" maxWidth="35.0" minHeight="35.0" minWidth="35.0" mnemonicParsing="false" onAction="#other_action" prefHeight="35.0" prefWidth="35.0" text="..." GridPane.columnIndex="6">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets left="10.0" />
+                                 </GridPane.margin></Button>
+                           </children>
+                        </GridPane>
+                        <Hyperlink text="Hyperlink">
+                           <graphic>
+                              <Label fx:id="videoDiscription_label" text="about video" />
+                           </graphic>
+                        </Hyperlink>
+                        <GridPane>
+                           <columnConstraints>
+                              <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="10.0" prefWidth="439.9999877929688" />
+                              <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="88.0000122070312" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label fx:id="commentCount" text="n Comments">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font></Label>
+                              <MenuButton mnemonicParsing="false" text="Sort by" GridPane.columnIndex="1">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                                </items>
+                              </MenuButton>
+                           </children>
+                        </GridPane>
+                        <VBox fx:id="videoComments_vBox" fillWidth="false" VBox.vgrow="SOMETIMES" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox fx:id="recommendVideo_vBox" prefHeight="452.0" prefWidth="298.0" spacing="10.0" HBox.hgrow="NEVER">
+                     <HBox.margin>
+                        <Insets right="20.0" top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
+   </center>
+   <top>
+      <VBox>
+         <children>
+            <GridPane alignment="CENTER" prefHeight="60.0" prefWidth="960.0">
+               <columnConstraints>
+                  <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="ALWAYS" minWidth="250.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="1000.0" />
+                  <ColumnConstraints fillWidth="false" halignment="LEFT" />
+                  <ColumnConstraints fillWidth="false" halignment="RIGHT" hgrow="ALWAYS" minWidth="307.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+               </rowConstraints>
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="194.0">
+                     <children>
+                        <Group layoutX="55.0" layoutY="10.0">
+                           <children>
+                              <Button fx:id="youTubeIconHome1_button" layoutX="2.0" layoutY="5.0" maxHeight="20.0" maxWidth="30.0" minHeight="20.0" minWidth="30.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="30.0" />
+                              <Button fx:id="youTubeTextHome_button" layoutX="34.0" layoutY="6.0" maxHeight="18.0" maxWidth="65.0" minHeight="18.0" minWidth="65.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="65.0" />
+                              <Button fx:id="youTubeIconHome2_button" layoutX="14.0" layoutY="11.0" maxHeight="8.0" maxWidth="8.0" minHeight="8.0" minWidth="8.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="8.0" />
+                           </children>
+                        </Group>
+                        <Button alignment="CENTER" layoutX="7.0" layoutY="5.0" mnemonicParsing="false" onAction="#toolBar_action" prefHeight="40.0" prefWidth="40.0">
+                           <graphic>
+                              <Button fx:id="toolBarHome_button" maxHeight="15.0" maxWidth="20.0" minHeight="15.0" minWidth="20.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="20.0" />
+                           </graphic>
+                        </Button>
+                     </children>
+                     <GridPane.margin>
+                        <Insets top="3.0" />
+                     </GridPane.margin>
+                  </AnchorPane>
+                  <TextField fx:id="Search_textField" maxHeight="40.0" minHeight="40.0" onAction="#searchResult_action" onKeyTyped="#searchRecommend_action" onMouseClicked="#search_action" prefHeight="40.0" prefWidth="573.0" promptText="Search" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
+                     <children>
+                        <Circle fx:id="accountProfHome_circle" fill="#ff1f1f" layoutX="162.0" layoutY="26.0" onMouseClicked="#account_action" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Button alignment="CENTER" layoutX="89.0" layoutY="5.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#notification_action" prefHeight="40.0" prefWidth="40.0">
+                           <graphic>
+                              <Button fx:id="notification_button" alignment="TOP_LEFT" maxHeight="22.0" maxWidth="16.0" minHeight="22.0" minWidth="16.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="16.0">
+                                 <graphic>
+                                    <Circle fx:id="notification_circle" fill="RED" radius="3.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" visible="false" />
+                                 </graphic></Button>
+                           </graphic>
+                        </Button>
+                        <Button alignment="CENTER" layoutX="43.0" layoutY="5.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#create_action" prefHeight="40.0" prefWidth="40.0">
+                           <graphic>
+                              <Button fx:id="creat_button" maxHeight="13.0" maxWidth="22.0" minHeight="13.0" minWidth="22.0" mnemonicParsing="false" prefHeight="13.0" prefWidth="22.0" />
+                           </graphic>
+                        </Button>
+                        <Button layoutX="-3.0" layoutY="5.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#refresh_action" prefHeight="40.0" prefWidth="40.0">
+                           <graphic>
+                              <Button fx:id="refresh_button" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" onAction="#refresh_action" prefHeight="15.0" prefWidth="15.0" />
+                           </graphic>
+                        </Button>
+                     </children>
+                     <GridPane.margin>
+                        <Insets top="3.0" />
+                     </GridPane.margin>
+                  </AnchorPane>
+                  <Button fx:id="search_button" maxHeight="39.0" maxWidth="60.0" minHeight="39.0" minWidth="60.0" mnemonicParsing="false" onAction="#searchResult_action" prefHeight="39.0" prefWidth="60.0" GridPane.columnIndex="2" GridPane.columnSpan="2">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="22.0" layoutX="60.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@searchIcon.gif" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="-3.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Pane fx:id="searchResult_pane" maxHeight="5.0" maxWidth="100.0" minHeight="5.0" minWidth="100.0" prefHeight="5.0" prefWidth="100.0" visible="false" GridPane.columnIndex="1">
+                     <children>
+                        <VBox fx:id="searchResult_vBox" layoutY="1.0" prefHeight="31.0" prefWidth="398.0" spacing="10.0">
+                           <padding>
+                              <Insets top="30.0" />
+                           </padding>
+                        </VBox>
+                        <Button fx:id="closeSearchResult_button" layoutX="6.0" layoutY="6.0" maxHeight="10.0" maxWidth="10.0" minHeight="10.0" minWidth="10.0" mnemonicParsing="false" onAction="#search_action" prefHeight="10.0" prefWidth="10.0" />
+                     </children>
+                     <GridPane.margin>
+                        <Insets top="50.0" />
+                     </GridPane.margin>
+                  </Pane>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </top>
+   <left>
+      <AnchorPane prefHeight="477.0" prefWidth="50.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="toolBar_vBox" prefHeight="224.0" prefWidth="48.0" spacing="40.0">
+               <children>
+                  <Button alignment="CENTER" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#home_action" prefHeight="40.0" prefWidth="40.0">
+                     <graphic>
+                        <Button fx:id="homeTollBar_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                     </graphic>
+                  </Button>
+                  <Button alignment="CENTER" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0">
+                     <graphic>
+                        <Button fx:id="shortsToolBar_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                     </graphic>
+                  </Button>
+                  <Button alignment="CENTER" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#subscriptions_action" prefHeight="40.0" prefWidth="40.0">
+                     <graphic>
+                        <Button fx:id="subscriptionsToolBar_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                     </graphic>
+                  </Button>
+                  <Button alignment="CENTER" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#myChannel_action" prefHeight="40.0" prefWidth="40.0">
+                     <graphic>
+                        <Button fx:id="youToolBar_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                     </graphic>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="8.0" top="40.0" />
+               </padding>
+            </VBox>
+            <Pane fx:id="fadeRectangle_pane" prefHeight="98.0" prefWidth="46.0" visible="false">
+               <children>
+                  <Rectangle fx:id="fadeRectangle_rectangle" height="540.0" layoutY="-48.0" onMouseClicked="#closeBars" opacity="0.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="960.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="toolBar_pane" maxHeight="490.0" maxWidth="50.0" prefHeight="432.0" prefWidth="50.0" visible="false">
+               <children>
+                  <ScrollPane fx:id="toolBar_scrollPane" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutY="-48.0" prefHeight="540.0" prefWidth="240.0" vbarPolicy="ALWAYS">
+                     <content>
+                        <VBox prefHeight="285.0" prefWidth="300.0" spacing="10.0">
+                           <children>
+                              <Group>
+                                 <children>
+                                    <Group layoutX="48.0" layoutY="5.0">
+                                       <children>
+                                          <Button fx:id="youTubeIconHome1_button1" layoutX="2.0" layoutY="5.0" maxHeight="20.0" maxWidth="30.0" minHeight="20.0" minWidth="30.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="30.0" />
+                                          <Button fx:id="youTubeTextHome_button1" layoutX="34.0" layoutY="6.0" maxHeight="18.0" maxWidth="65.0" minHeight="18.0" minWidth="65.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="65.0" />
+                                          <Button fx:id="youTubeIconHome2_button1" layoutX="14.0" layoutY="11.0" maxHeight="8.0" maxWidth="8.0" minHeight="8.0" minWidth="8.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="8.0" />
+                                       </children>
+                                    </Group>
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#toolBar_action" prefHeight="40.0" prefWidth="40.0">
+                                       <graphic>
+                                          <Button fx:id="toolBarHome_button1" maxHeight="15.0" maxWidth="20.0" minHeight="15.0" minWidth="20.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="20.0" />
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </Group>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" onAction="#home_action" prefHeight="40.0" prefWidth="220.0" text="   Home">
+                                 <graphic>
+                                    <Button fx:id="homeTollBar_button1" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" text="   Shotrs">
+                                 <graphic>
+                                    <Button fx:id="shortsToolBar_button1" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" onAction="#subscriptions_action" prefHeight="40.0" prefWidth="220.0" text="   Subscriptions">
+                                 <graphic>
+                                    <Button fx:id="subscriptionsToolBar_button1" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" onAction="#myChannel_action" prefHeight="40.0" prefWidth="220.0" text="   You">
+                                 <graphic>
+                                    <Button fx:id="youToolBar_button1" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                              <Line endX="200.0" stroke="#818181" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Line>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" onAction="#myChannel_action" prefHeight="40.0" prefWidth="220.0" text="   Your channel">
+                                 <graphic>
+                                    <Button fx:id="yourChannelIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" onAction="#history_action" prefHeight="40.0" prefWidth="220.0" text="   History">
+                                 <graphic>
+                                    <Button fx:id="historyIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" text="   Playlists">
+                                 <graphic>
+                                    <Button fx:id="playlistIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" onAction="#watchLater_action" prefHeight="40.0" prefWidth="220.0" text="   Watch later">
+                                 <graphic>
+                                    <Button fx:id="watchLaterIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" onAction="#likedVideos_action" prefHeight="40.0" prefWidth="220.0" text="   Liked videos">
+                                 <graphic>
+                                    <Button fx:id="likedVideosIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                              <Line endX="200.0" stroke="#818181">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Line>
+                              <Label text="Subscribtion">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <VBox fx:id="subscribtion_vBox">
+                                 <VBox.margin>
+                                    <Insets right="10.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <Hyperlink text="All subscribtions" textFill="#818181">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Hyperlink>
+                              <Line endX="200.0" stroke="#818181">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
+                              </Line>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" onAction="#settings_action" prefHeight="40.0" prefWidth="220.0" text="   Settings">
+                                 <graphic>
+                                    <Button fx:id="settingsIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" text="   Report history">
+                                 <graphic>
+                                    <Button fx:id="reportHistoryIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" text="   Help">
+                                 <graphic>
+                                    <Button fx:id="helpIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                              <Button alignment="BASELINE_LEFT" maxHeight="40.0" minHeight="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="220.0" text="   Send feedback">
+                                 <graphic>
+                                    <Button fx:id="sendFeedbackIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" />
+                                 </graphic>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets left="7.0" top="7.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+         </children>
+         <BorderPane.margin>
+            <Insets top="-54.0" />
+         </BorderPane.margin>
+      </AnchorPane>
+   </left>
+   <right>
+      <Pane maxHeight="20.0" maxWidth="0.0" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" BorderPane.alignment="TOP_CENTER">
+         <children>
+            <Pane fx:id="account_pane" prefHeight="46.0" prefWidth="46.0" visible="false">
+               <children>
+                  <CubicCurve controlX1="268.5999755859375" controlX2="169.39996337890625" controlY1="-441.79998779296875" controlY2="385.4000244140625" disable="true" endX="157.00006103515625" endY="42.20000457763672" fill="#e4e4e4" layoutX="-245.0" layoutY="-75.0" startX="157.00006103515625" startY="477.1999816894531" stroke="BLACK" strokeWidth="0.0" />
+                  <VBox fx:id="account_vBox" alignment="TOP_CENTER" layoutX="-288.0" layoutY="-53.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <AnchorPane prefHeight="81.0" prefWidth="200.0">
+                           <children>
+                              <VBox layoutX="54.0" layoutY="6.0" prefWidth="128.0" spacing="3.0">
+                                 <children>
+                                    <Label text="Channel name " wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="\@Channel username" />
+                                    <Hyperlink onAction="#myChannel_action" text="View your channel">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Hyperlink>
+                                 </children>
+                              </VBox>
+                              <Circle fx:id="accountProfHome_circle1" fill="#ff1f1f" layoutX="28.0" layoutY="34.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+                           </children>
+                        </AnchorPane>
+                        <Line endX="90.69285583496094" startX="-100.0" stroke="#a4a4a4" strokeWidth="0.5" />
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text=" Switch account             &gt;">
+                           <graphic>
+                              <Button fx:id="switchAccountIcon_Button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="Button" />
+                           </graphic>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#signOut_action" prefHeight="40.0" prefWidth="180.0" text=" Sign out">
+                           <graphic>
+                              <Button fx:id="signOutIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="Button" />
+                           </graphic>
+                        </Button>
+                        <Line endX="90.69285583496094" startX="-100.0" stroke="#a4a4a4" strokeWidth="0.5" />
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text=" Purchases &amp; memberships">
+                           <graphic>
+                              <Button fx:id="purchasesIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="Button" />
+                           </graphic>
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Line endX="90.69285583496094" startX="-100.0" stroke="#a4a4a4" strokeWidth="0.5" />
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#theme_action" prefHeight="40.0" prefWidth="180.0" text=" Appearance: What?       &gt;">
+                           <graphic>
+                              <Button fx:id="appearanceIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="Button" />
+                           </graphic>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text=" Restricted mode: on      &gt;">
+                           <graphic>
+                              <Button fx:id="restrictedIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="Button" />
+                           </graphic>
+                        </Button>
+                        <Line endX="90.69285583496094" startX="-100.0" stroke="#a4a4a4" strokeWidth="0.5" />
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text=" Settings">
+                           <graphic>
+                              <Button fx:id="settingsIcon_button1" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="Button" />
+                           </graphic>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text=" Help">
+                           <graphic>
+                              <Button fx:id="helpIcon_button1" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="Button" />
+                           </graphic>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text="Send feedback">
+                           <graphic>
+                              <Button fx:id="feedbackIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="Button" />
+                           </graphic>
+                        </Button>
+                        <Line endX="90.69285583496094" startX="-100.0" stroke="#a4a4a4" strokeWidth="0.5" />
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane fx:id="notification_pane" prefHeight="61.0" prefWidth="44.0" visible="false">
+               <children>
+                  <ScrollPane fx:id="notification_scrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutX="-348.0" layoutY="-53.0" prefHeight="268.0" prefWidth="200.0">
+                     <content>
+                        <VBox fx:id="notification_vBox" spacing="5.0">
+                           <children>
+                              <Label text="Notificatins:">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <CubicCurve controlX1="223.99993896484375" controlX2="197.60003662109375" controlY1="-169.0" controlY2="98.20000457763672" disable="true" endX="134.39996337890625" endY="35.00000762939453" fill="#e4e4e4" layoutX="-283.0" layoutY="-73.0" startX="134.39996337890625" startY="266.9999694824219" stroke="BLACK" strokeWidth="0.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="creat_pane" prefHeight="61.0" prefWidth="44.0" visible="false">
+               <children>
+                  <VBox fx:id="creat_vBox" alignment="TOP_CENTER" layoutX="-388.0" layoutY="-53.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Line endX="90.69285583496094" startX="-100.0" stroke="#a4a4a4" strokeWidth="0.5" />
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#uploadVideo_action" prefHeight="40.0" prefWidth="180.0" text=" Upload video">
+                           <graphic>
+                              <Button fx:id="uploadIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="Button" />
+                           </graphic>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text=" Go live">
+                           <graphic>
+                              <Button fx:id="liveIcon_button" maxHeight="20.0" maxWidth="20.0" minHeight="20.0" minWidth="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" text="Button" />
+                           </graphic>
+                        </Button>
+                        <Line endX="90.69285583496094" startX="-100.0" stroke="#a4a4a4" strokeWidth="0.5" />
+                     </children>
+                  </VBox>
+                  <CubicCurve controlX1="236.39996337890625" controlX2="177.99993896484375" controlY1="-61.19999694824219" controlY2="70.80000305175781" disable="true" endX="134.39996337890625" endY="31.000003814697266" fill="#e4e4e4" layoutX="-325.0" layoutY="-74.0" startX="134.39996337890625" startY="98.73332977294922" stroke="BLACK" strokeWidth="0.0" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </right>
+</BorderPane>

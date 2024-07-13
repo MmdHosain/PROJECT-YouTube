@@ -1,24 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="postInHome_anchorPane" minHeight="296.0" minWidth="286.0" prefHeight="286.0" prefWidth="286.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controllers.PostInHomeController">
+<AnchorPane fx:id="postInHome_anchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controllers.PostInHomeController">
    <children>
       <VBox spacing="5.0">
          <children>
-            <ImageView fx:id="imageThumbnail_imageView" fitHeight="161.0" fitWidth="286.0" pickOnBounds="true" preserveRatio="true" />
-            <Label text="Label">
+            <AnchorPane fx:id="thumbnail_anchorPane">
+               <children>
+                  <ImageView fx:id="thumbnail_imageView" fitHeight="161.0" fitWidth="286.0" pickOnBounds="true" preserveRatio="true" />
+                  <MediaView fx:id="thumbnail_mediaView" fitHeight="161.0" fitWidth="286.0" onMouseReleased="#goToVideoPlayer_action" visible="false" />
+                  <Button fx:id="thumbnail_button" mnemonicParsing="false" onAction="#goToVideoPlayer_action" onMouseEntered="#hideLine_action" onMouseExited="#showLine_action" opacity="0.37" />
+               </children>
+            </AnchorPane>
+            <Line fx:id="lineOnThumbnail_line" endX="282.0" strokeWidth="4.0">
+               <VBox.margin>
+                  <Insets top="-10.0" />
+               </VBox.margin>
+               <stroke>
+                  <LinearGradient endX="1.0" endY="1.0" startY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.5208613728129206">
+                           <color>
+                              <Color red="1.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Line>
+            <Label fx:id="videoTopic_label" onMouseClicked="#goToVideoPlayer_action" text="Topic">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
+               <VBox.margin>
+                  <Insets left="3.0" />
+               </VBox.margin>
             </Label>
-            <Label text="chanel name" textFill="#5b5b5b" />
-            <Label text="view • time upload" textFill="#5b5b5b" />
+            <Hyperlink fx:id="chanel_hyperlink" onAction="#channel_action" text="Hyperlink" textFill="#5b5b5b" />
+            <GridPane>
+               <VBox.margin>
+                  <Insets left="3.0" />
+               </VBox.margin>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label fx:id="timeAndView_label" text="view • time upload" textFill="#5b5b5b" />
+                  <Pane fx:id="other_pane" prefHeight="14.0" prefWidth="40.0" visible="false" GridPane.columnIndex="1">
+                     <children>
+                        <CubicCurve controlX1="347.5999755859375" controlX2="311.39996337890625" controlY1="185.39999389648438" controlY2="134.8000030517578" disable="true" endX="289.9999694824219" endY="127.79999542236328" fill="#e4e4e4" layoutX="-307.0" layoutY="-144.0" startX="289.9999694824219" startY="113.20000457763672" stroke="BLACK" strokeWidth="0.2" />
+                        <VBox fx:id="other_vBox" layoutX="-137.0" layoutY="-38.0" prefWidth="120.0" spacing="10.0">
+                           <children>
+                              <Button alignment="BASELINE_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#delete_action" text="  Delete">
+                                 <graphic>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@trash.gif" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
+                  <Button fx:id="other_button" alignment="CENTER" contentDisplay="CENTER" maxHeight="25.0" maxWidth="25.0" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" onAction="#other_action" prefHeight="25.0" prefWidth="25.0" GridPane.columnIndex="1">
+                     <graphic>
+                        <Button fx:id="otherIcon_button" maxHeight="3.0" maxWidth="10.0" minHeight="3.0" minWidth="10.0" mnemonicParsing="false" prefHeight="3.0" prefWidth="10.0" text="Button" />
+                     </graphic>
+                  </Button>
+               </children>
+            </GridPane>
          </children>
       </VBox>
    </children>

@@ -1,0 +1,61 @@
+#newPlaylist_anchorPane {
+    -fx-background-color: linear-gradient(to bottom, rgba(236, 236, 236, 0.95), rgba(229, 122, 122, 0.95));
+    -fx-background-insets: 10;
+    -fx-background-radius: 40;
+    -fx-effect: dropshadow(three-pass-box, #2f2f2f, 8, 0, 4, 4);
+}
+.text-area{
+    -fx-control-inner-background: transparent;
+    -fx-background-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-prompt-text-fill: #838383;
+
+    -fx-text-fill: #800000;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-border-color: #2f2f2f;
+}
+#newPlaylist_scrollPane {
+    -fx-background-color: transparent;
+}
+
+#newPlaylist_scrollPane .increment-arrow,
+#newPlaylist_scrollPane .decrement-arrow {
+    -fx-opacity: 0;
+}
+
+#newPlaylist_scrollPane .viewport {
+    -fx-background-color: transparent;
+}
+
+#newPlaylist_scrollPane .thumb {
+    -fx-background-color: #800000;
+    -fx-background-radius: 10;
+    -fx-background-insets: 4;
+
+}
+
+#newPlaylist_scrollPane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: -2;
+}
+#creat_button{
+    -fx-background-color: #800000;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-text-fill: white;
+}
+#pripub_comboBox{
+    -fx-background-color: transparent;
+    -fx-background-radius: 20;
+    -fx-border-width: 1;
+    -fx-border-color: #2f2f2f;
+    -fx-border-radius: 20;
+}
+#closeIcon_button{
+    -fx-shape: "M90.914,5.296c6.927-7.034,18.188-7.065,25.154-0.068 c6.961,6.995,6.991,18.369,0.068,25.397L85.743,61.452l30.425,30.855c6.866,6.978,6.773,18.28-0.208,25.247 c-6.983,6.964-18.21,6.946-25.074-0.031L60.669,86.881L30.395,117.58c-6.927,7.034-18.188,7.065-25.154,0.068 c-6.961-6.995-6.992-18.369-0.068-25.397l30.393-30.827L5.142,30.568c-6.867-6.978-6.773-18.28,0.208-25.247 c6.983-6.963,18.21-6.946,25.074,0.031l30.217,30.643L90.914,5.296L90.914,5.296z";
+    -fx-background-color: black;
+}
+#closeIcon_button:hover{
+    -fx-background-color: red;
+}

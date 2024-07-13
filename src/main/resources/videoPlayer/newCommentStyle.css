@@ -1,0 +1,12 @@
+#comment_button{
+    -fx-background-color: #d3a5a5;
+}
+#comment_button:hover{
+    -fx-background-color: #d98d8d;
+}
+#cancel_button{
+    -fx-background-color: #e0e0e0;
+}
+#cancel_button:hover{
+    -fx-background-color: #cccccc;
+}

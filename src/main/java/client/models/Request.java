@@ -1,9 +1,12 @@
 package client.models;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import static client.models.Main.write;
+import java.io.File;
+
+import static client.models.Main.*;
+
 
 public class Request {
     //account requests--------------------------------------------------------------------------------------
@@ -11,8 +14,14 @@ public class Request {
     public void login(String username_input, String password_input){
         JSONObject request = new JSONObject();
         request.put("requestType","/login");
-        request.put("username",username_input);
-        request.put("password",password_input);
+        request.put("username_input",username_input);
+        request.put("password_input",password_input);
+//        request.put("name_input",name_input);
+//        request.put("email_input",email_input);
+//        request.put("number_input",number_input);
+        request.put("name_input","example_name");
+        request.put("email_input","example_email");
+        request.put("number_input","example_number");
 
         write(request);
     }
@@ -43,10 +52,29 @@ public class Request {
 
         write(request);
     }
+    public void profileImg() {
+        JSONObject request = new JSONObject();
+        request.put("requestType","/profileImg");
+        write(request);
+    }
+    public void channelProfileImg(String channel_username) {
+        JSONObject request = new JSONObject();
+        request.put("requestType","/channelProfileImg");
+        request.put("channel_username",channel_username);
+        write(request);
+    }
     //-------------------------------------------------------------------------------------------------------
 
     // item list request-------------------------------------------------------------------------------------
-    static void videoList(String videoCount, JSONArray tags){
+    public void ChannelVideoList(String channel_username){
+        JSONObject request = new JSONObject();
+        request.put("requestType","/ChannelVideoList");
+        request.put("channel_username",channel_username);
+
+
+        write(request);
+    }
+    public void videoList(int videoCount, JSONArray tags){
         JSONObject request = new JSONObject();
         request.put("requestType","/videoList");
         request.put("count",videoCount);
@@ -71,7 +99,7 @@ public class Request {
 
         write(request);
     }
-    public void commentList(String video_id){
+    public void commentList(int video_id){
         JSONObject request = new JSONObject();
         request.put("requestType","/commentList");
         request.put("video_id",video_id);
@@ -82,21 +110,28 @@ public class Request {
 
     //-------------------------------------------------------------------------------------------------------
     // item request------------------------------------------------------------------------------------------
-    static void video(String video_id){
+    public void video(int video_id){
         JSONObject request = new JSONObject();
         request.put("requestType","/video");
         request.put("video_id",video_id);
 
         write(request);
     }
-    static void videoFile(String video_id){
+    public void videoFile(int video_id){
         JSONObject request = new JSONObject();
         request.put("requestType","/videoFile");
         request.put("video_id",video_id);
 
         write(request);
     }
-    public void comment(String comment_id){
+    public void imageFile(int video_id){
+        JSONObject request = new JSONObject();
+        request.put("requestType","/imageFile");
+        request.put("video_id",video_id);
+
+        write(request);
+    }
+    public void comment(int comment_id){
         JSONObject request = new JSONObject();
         request.put("requestType","/comment");
         request.put("comment_id",comment_id);
@@ -104,16 +139,24 @@ public class Request {
 
         write(request);
     }
-    public void channel(String channel_id){
+    public void channel(String channel_username){
         JSONObject request = new JSONObject();
         request.put("requestType","/channel");
-        request.put("channel_id",channel_id);
+        request.put("channel_username",channel_username);
 
 
         write(request);
     }
-    //------------------------------------------------------------------------------------------------------
+    public void getChannelUsername(String username) {
 
+        JSONObject request = new JSONObject();
+        request.put("requestType","/getChannelUsername");
+
+        write(request);
+
+    }
+
+    //------------------------------------------------------------------------------------------------------
     // submit requests -------------------------------------------------------------------------------------
     public void createChannel(String channelName,String channelUsername ,JSONArray tags){
 
@@ -136,18 +179,29 @@ public class Request {
 
         write(request);
     }
-    public void addVideo(String channel_id, String videoName, String videoCaption, JSONArray tags){
+    public void addVideo(String channel_username, String videoName, String videoCaption, JSONArray tags, File fileToUpload, String chosenPlaylist){
 
         JSONObject request = new JSONObject();
         request.put("requestType","/addVideo");
-        request.put("channel_id",channel_id);
+        request.put("channel_username",channel_username);
         request.put("videoName",videoName);
         request.put("videoDescription",videoCaption);
         request.put("tags",tags);
+        request.put("playlist",chosenPlaylist);
 
 
         write(request);
+        JSONObject response = read();
+
+        if (response.getString("responseType").equals("/addVideo_accepted")){
+            uploadFile(fileToUpload);
+            System.out.println("upload successful");
+        }
+        else {
+            System.out.println("upload unsuccessful");
+        }
     }
+
     public void removeVideo(int video_id){
 
         JSONObject request = new JSONObject();
@@ -158,7 +212,7 @@ public class Request {
 
         write(request);
     }
-    static void addComment(String video_id,String text ,String repliedTo_id){
+    public void addComment(int video_id,String text ,int repliedTo_id){
         JSONObject request = new JSONObject();
         request.put("requestType","/addComment");
 
@@ -168,7 +222,7 @@ public class Request {
 
         write(request);
     }
-    static void removeComment(String comment_id,String repliedTo_id){
+    public void removeComment(int comment_id,int repliedTo_id){
         JSONObject request = new JSONObject();
         request.put("requestType","/removeComment");
         request.put("comment_id",comment_id);
@@ -176,31 +230,51 @@ public class Request {
 
         write(request);
     }
-    //------------------------------------------------------------------------------------------------------
+    public void createPlaylist(String title,String description,String channel_username){
+        JSONObject request = new JSONObject();
+        request.put("requestType","/createPlaylist");
+        request.put("title",title);
+        request.put("description",description);
+        request.put("channel_username",channel_username);
 
+        write(request);
+    }
+    public void getPlaylistList(String channel_username){
+        JSONObject request = new JSONObject();
+        request.put("requestType","/getPlaylistList");
+        request.put("channel_username",channel_username);
+
+        write(request);
+    }
+    //------------------------------------------------------------------------------------------------------
     // tiny action request----------------------------------------------------------------------------------
-    public void subscribeChannel(String channel_id, String videoName, String videoCaption, JSONArray tags){
+    public void subscribeChannel(String channel_username){
 
         JSONObject request = new JSONObject();
         request.put("requestType","/subscribeChannel");
-        request.put("channel_id",channel_id);
+        request.put("channel_username",channel_username);
 
 
         write(request);
     }
-    public void unsubscribeChannel(String channel_id, String videoName, String videoCaption, JSONArray tags){
+    public void unsubscribeChannel(String channel_username){
 
         JSONObject request = new JSONObject();
         request.put("requestType","/unsubscribeChannel");
-        request.put("channel_id",channel_id);
-
-
+        request.put("channel_username",channel_username);
 
         write(request);
     }
-    static void add_WatchedVideo(String video_id){
+    public void add_WatchedVideo(int video_id){
         JSONObject request = new JSONObject();
-        request.put("requestType","/watchVideo");
+        request.put("requestType","/add_WatchedVideo");
+        request.put("video_id",video_id);
+
+        write(request);
+    }
+    public void add_WatchLaterVideo(int video_id){
+        JSONObject request = new JSONObject();
+        request.put("requestType","/add_WatchLaterVideo");
         request.put("video_id",video_id);
 
         write(request);
@@ -228,15 +302,15 @@ public class Request {
 
         write(request);
     }
-    static void add_likedVideo(String video_id){
+    public void likeVideo(int video_id){
         JSONObject request = new JSONObject();
-        request.put("requestType","/add_likedVideo");
+        request.put("requestType","/likeVideo");
         request.put("video_id",video_id);
 
 
         write(request);
     }
-    static void remove_likedVideo(String video_id){
+    public void remove_likedVideo(int video_id){
         JSONObject request = new JSONObject();
         request.put("requestType","/remove_likedVideo");
         request.put("video_id",video_id);
@@ -244,26 +318,59 @@ public class Request {
 
         write(request);
     }
-    static void add_dislikedVideo(String video_id){
+    public void dislikeVideo(int video_id){
         JSONObject request = new JSONObject();
-        request.put("requestType","/add_dislikedVideo");
+        request.put("requestType","/dislikeVideo");
         request.put("video_id",video_id);
 
         write(request);
     }
-    static void remove_dislikedVideo(String video_id){
+    public void remove_dislikedVideo(int video_id){
         JSONObject request = new JSONObject();
         request.put("requestType","/remove_dislikedVideo");
         request.put("video_id",video_id);
 
         write(request);
     }
+
     static void edit_commentLike(String comment_id,String editType){
         JSONObject request = new JSONObject();
 
         request.put("requestType","/edit_commentLike");
         request.put("editType","/edit_commentLike"); //edit type: /addLike /removeLike /addDislike /removeDislike
         request.put("comment_id",comment_id);
+
+
+        write(request);
+    }
+
+    public void search(String text) {
+        JSONObject request = new JSONObject();
+
+        request.put("requestType","/search");
+        request.put("text",text);
+
+        write(request);
+    }
+
+    public void historyVideoList() {
+        JSONObject request = new JSONObject();
+        request.put("requestType","/historyVideoList");
+
+
+        write(request);
+    }
+
+    public void watchLaterVideoList() {
+        JSONObject request = new JSONObject();
+        request.put("requestType","/watchLaterVideoList");
+
+
+        write(request);
+    }
+    public void likedVideoList() {
+        JSONObject request = new JSONObject();
+        request.put("requestType","/likedVideoList");
 
 
         write(request);

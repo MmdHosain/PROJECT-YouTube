@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="uploadVideo_anchorPain" prefHeight="450.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controllers.UploadFileController">
+   <children>
+      <Pane fx:id="details_pane" prefHeight="200.0" prefWidth="200.0" visible="false">
+         <children>
+            <Label fx:id="videoTitle_label" layoutX="26.0" layoutY="18.0" text="Video">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="details_scrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutX="17.0" layoutY="60.0" prefHeight="366.0" prefWidth="480.0" vbarPolicy="ALWAYS">
+               <content>
+                  <VBox spacing="15.0">
+                     <children>
+                        <Label text="Details">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="   Title (required)" />
+                        <TextField fx:id="videoTitle_textField" minHeight="60.0" prefHeight="60.0" prefWidth="467.0" promptText="Video">
+                           <font>
+                              <Font name="Trebuchet MS" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="-35.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Label text="   Description" />
+                        <TextArea fx:id="description_textArea" prefHeight="132.0" prefWidth="467.0" promptText="Tell viewers about your video (type @ to mention channel)" wrapText="true">
+                           <font>
+                              <Font name="Trebuchet MS" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="-35.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets top="15.0" />
+                           </padding>
+                        </TextArea>
+                        <Label text="Thumbnail">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label minHeight="21.0" prefHeight="20.0" prefWidth="361.0" text="Set a thumbnail that stands out and draws viewers' attention.    Choose one of these to set for the video thumbnail:" wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets top="-15.0" />
+                           </padding>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="462.0" spacing="8.0">
+                           <children>
+                              <ToggleButton fx:id="thumbnail_imageView1" maxHeight="84.0" maxWidth="150.0" minHeight="84.0" minWidth="150.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="150.0" />
+                              <ToggleButton fx:id="thumbnail_imageView11" maxHeight="84.0" maxWidth="150.0" minHeight="84.0" minWidth="150.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="150.0" />
+                              <ToggleButton fx:id="thumbnail_imageView12" maxHeight="84.0" maxWidth="150.0" minHeight="84.0" minWidth="150.0" mnemonicParsing="false" prefHeight="84.0" prefWidth="150.0" />
+                           </children>
+                        </HBox>
+                        <Label minHeight="21.0" prefHeight="20.0" prefWidth="361.0" text="Or you can set your own thumbnail." wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="-10.0" top="-20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox spacing="20.0">
+                           <children>
+                              <Button fx:id="newPlaylist_button1" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="+">
+                                 <font>
+                                    <Font name="Tahoma Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                              <ToggleButton fx:id="thumbnail_imageView111" maxHeight="56.25" maxWidth="100.0" minHeight="56.25" minWidth="100.0" mnemonicParsing="false" prefHeight="56.25" prefWidth="100.0" />
+                           </children>
+                        </HBox>
+                        <Label text="Playlists">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label minHeight="21.0" prefHeight="22.0" prefWidth="437.0" text="Add your video to one or more playlists to organize your content for viewers.  Tape the + button to creat a new playlist." wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS" size="12.0" />
+                           </font>
+                           <padding>
+                              <Insets top="-15.0" />
+                           </padding>
+                        </Label>
+                        <HBox prefHeight="44.0" prefWidth="467.0" spacing="30.0">
+                           <children>
+                              <ComboBox fx:id="selectPlaylist_comboBox" maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="200.0" promptText="Select" />
+                              <Button fx:id="newPlaylist_button" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#newPlaylist_action" prefHeight="40.0" prefWidth="40.0" text="+">
+                                 <font>
+                                    <Font name="Tahoma Bold" size="13.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <Label text="Audience">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label minHeight="21.0" prefHeight="22.0" prefWidth="407.0" text="Is this video made for kids? (required)" wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="12.0" />
+                           </font>
+                           <padding>
+                              <Insets top="-30.0" />
+                           </padding>
+                        </Label>
+                        <Label minHeight="30.0" prefHeight="30.0" prefWidth="461.0" text="Regardless of your location, you're legally required to comply with the Children's Online Privacy Protection Act (COPPA) and/or other laws. You're required to tell us whether your videos are made for kids." wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS" size="12.0" />
+                           </font>
+                           <padding>
+                              <Insets top="-45.0" />
+                           </padding>
+                        </Label>
+                        <RadioButton fx:id="childYes_radioButton" mnemonicParsing="false" text="Yes, it's made for kids.">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets top="-20.0" />
+                           </padding>
+                        </RadioButton>
+                        <RadioButton fx:id="childNo_radioButton" mnemonicParsing="false" text="No, it's not made for kids">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </RadioButton>
+                        <Label text="Tags">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label minHeight="30.0" prefHeight="30.0" prefWidth="461.0" text="Tags can be useful if content in your video is commonly misspelled. Otherwise, tags play a minimal role in helping viewers find your video." wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS" size="12.0" />
+                           </font>
+                           <padding>
+                              <Insets top="-15.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="-20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label minHeight="30.0" prefHeight="30.0" prefWidth="461.0" text="Note: Enter a camma after each tag." wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <TextArea fx:id="addTag_textArea" prefHeight="60.0" prefWidth="467.0" promptText="Add tag" wrapText="true">
+                           <font>
+                              <Font name="Trebuchet MS" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="-5.0" />
+                           </VBox.margin>
+                        </TextArea>
+                        <Label text="Visibility">
+                           <font>
+                              <Font name="Comic Sans MS Bold" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label minHeight="30.0" prefHeight="30.0" prefWidth="461.0" text="Choose when to publish and who can see your video." wrapText="true">
+                           <font>
+                              <Font name="Comic Sans MS" size="12.0" />
+                           </font>
+                           <padding>
+                              <Insets top="-15.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="-15.0" />
+                           </VBox.margin>
+                        </Label>
+                        <RadioButton fx:id="private_RadiButton" mnemonicParsing="false" text="Private">
+                           <VBox.margin>
+                              <Insets bottom="-15.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <Label text="      Only you and people you choose can watch video." textFill="#4b4b4b" />
+                        <RadioButton fx:id="public_radioButton" mnemonicParsing="false" text="Public">
+                           <padding>
+                              <Insets top="-5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="-15.0" />
+                           </VBox.margin>
+                        </RadioButton>
+                        <Label text="      Everyone can watch your video." textFill="#4b4b4b" />
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <Line fx:id="divide_line" endX="-100.0" endY="363.79998779296875" layoutX="598.0" layoutY="65.0" startX="-100.0" strokeWidth="2.0">
+               <stroke>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.4699999988079071" green="0.4699999988079071" blue="0.4699999988079071" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color red="0.4699999988079071" green="0.4699999988079071" blue="0.4699999988079071" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.278600269179004">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.7564389587368282">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.46000000834465027" green="0.46000000834465027" blue="0.46000000834465027" opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.4699999988079071" green="0.4699999988079071" blue="0.4699999988079071" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color red="0.4699999988079071" green="0.4699999988079071" blue="0.4699999988079071" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.278600269179004">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.7564389587368282">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.46000000834465027" green="0.46000000834465027" blue="0.46000000834465027" opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Line>
+            <MediaView fx:id="video_mediaView" fitHeight="129.4" fitWidth="230.0" layoutX="505.0" layoutY="71.0" />
+            <Line endX="-100.0" endY="363.79998779296875" layoutX="720.0" layoutY="-48.0" rotate="90.0" startX="-100.0" startY="134.0">
+               <stroke>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.42126514131897713">
+                           <color>
+                              <Color red="0.4699999988079071" green="0.4699999988079071" blue="0.4699999988079071" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.5773889636608341">
+                           <color>
+                              <Color red="0.46000000834465027" green="0.46000000834465027" blue="0.46000000834465027" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Line>
+            <Label layoutX="506.0" layoutY="218.0" text="Video length: " />
+            <Label layoutX="506.0" layoutY="246.0" text="Video size: " />
+            <Line endX="-100.0" endY="363.79998779296875" layoutX="835.0" layoutY="-163.0" startX="-100.0" startY="234.0">
+               <stroke>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.42126514131897713">
+                           <color>
+                              <Color red="0.4699999988079071" green="0.4699999988079071" blue="0.4699999988079071" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.5773889636608341">
+                           <color>
+                              <Color red="0.46000000834465027" green="0.46000000834465027" blue="0.46000000834465027" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Line>
+            <Line endX="-100.0" endY="363.79998779296875" layoutX="720.0" layoutY="-178.0" rotate="90.0" startX="-100.0" startY="134.0">
+               <stroke>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.42126514131897713">
+                           <color>
+                              <Color red="0.4699999988079071" green="0.4699999988079071" blue="0.4699999988079071" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.5773889636608341">
+                           <color>
+                              <Color red="0.46000000834465027" green="0.46000000834465027" blue="0.46000000834465027" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Line>
+            <Line endX="-100.0" endY="363.79998779296875" layoutX="605.0" layoutY="-163.0" startX="-100.0" startY="234.0">
+               <stroke>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.42126514131897713">
+                           <color>
+                              <Color red="0.4699999988079071" green="0.4699999988079071" blue="0.4699999988079071" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.5773889636608341">
+                           <color>
+                              <Color red="0.46000000834465027" green="0.46000000834465027" blue="0.46000000834465027" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Line>
+            <Button fx:id="upload_button" layoutX="620.0" layoutY="394.0" maxHeight="45.0" maxWidth="120.0" minHeight="45.0" minWidth="120.0" mnemonicParsing="false" onAction="#upload_action" prefHeight="45.0" prefWidth="120.0" text="Upload">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.4699999988079071" green="0.4699999988079071" blue="0.4699999988079071" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.006729475100942127">
+                           <color>
+                              <Color red="0.4699999988079071" green="0.4699999988079071" blue="0.4699999988079071" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.278600269179004">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="0.7564389587368282">
+                           <color>
+                              <Color />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.46000000834465027" green="0.46000000834465027" blue="0.46000000834465027" opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Button>
+            <Button fx:id="back_button" layoutX="499.0" layoutY="394.0" maxHeight="45.0" maxWidth="120.0" minHeight="45.0" minWidth="120.0" mnemonicParsing="false" onAction="#back_action" prefHeight="45.0" prefWidth="120.0" text="Back">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="videoPath_label" layoutX="506.0" layoutY="274.0" maxWidth="229.0" prefWidth="229.0" text="Video path: " wrapText="true" />
+            <Label fx:id="status_label" alignment="CENTER" layoutX="503.0" layoutY="371.0" prefWidth="231.0" textAlignment="CENTER" textFill="#d40000" />
+         </children>
+      </Pane>
+      <Pane fx:id="selectFile_pane" prefHeight="214.0" prefWidth="257.0">
+         <children>
+            <Label layoutX="26.0" layoutY="18.0" text="Upload Video" textFill="MAROON">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="selectFile_button" alignment="BASELINE_CENTER" layoutX="323.50001525878906" layoutY="336.0" maxHeight="35.0" maxWidth="100.0" minHeight="35.0" minWidth="100.0" mnemonicParsing="false" onAction="#selectFile_action" prefHeight="35.0" prefWidth="100.0" text="SELECT FILE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fx:id="upload_imageView" fitHeight="91.0" fitWidth="149.0" layoutX="304.50001525878906" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <DropShadow height="30.36" radius="14.68" width="30.36">
+                     <color>
+                        <Color red="0.501960813999176" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <image>
+                  <Image url="@uploadImage.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="help_label" alignment="CENTER" layoutX="208.0" layoutY="218.0" prefHeight="43.0" prefWidth="329.0" text="Here you can select the file to upload with explorer.    note: just mp4 files supported." textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="selectedFile_label" alignment="TOP_CENTER" layoutX="170.50001525878906" layoutY="272.0" prefWidth="410.0" textAlignment="CENTER" textFill="#543232" wrapText="true" />
+            <Button fx:id="next_button" layoutX="620.0" layoutY="394.0" maxHeight="45.0" maxWidth="120.0" minHeight="45.0" minWidth="120.0" mnemonicParsing="false" onAction="#next_action" prefHeight="45.0" prefWidth="120.0" text="Next">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Button fx:id="close_button" layoutX="707.0" layoutY="27.0" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" onAction="#close_action" prefHeight="15.0" prefWidth="15.0" />
+      <Button fx:id="refresh_button" layoutX="669.0" layoutY="27.0" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" onAction="#refresh_action" prefHeight="15.0" prefWidth="15.0" />
+      <Button fx:id="feedback_button" layoutX="631.0" layoutY="27.0" maxHeight="15.0" maxWidth="15.0" minHeight="15.0" minWidth="15.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" />
+      <Line endX="632.6000366210938" layoutX="102.0" layoutY="57.0" startX="-85.00001525878906" stroke="#5b5b5b" strokeWidth="0.5" />
+   </children>
+</AnchorPane>

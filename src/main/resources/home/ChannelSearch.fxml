@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<GridPane minHeight="-Infinity" prefHeight="140.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.controllers.ChannelSearchController">
+  <columnConstraints>
+    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="232.80001831054688" />
+    <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="498.39998168945317" />
+      <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" maxWidth="250.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Circle fx:id="channelProf_circle" fill="DODGERBLUE" radius="60.0" stroke="BLACK" strokeType="INSIDE" />
+      <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="1">
+         <children>
+            <Label fx:id="channelName_label" text="Channel name">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="channelUserSub_label" text="\\@ChannelUsername • 25k subscribers" />
+            <Label fx:id="channelInfo_label" text="channel info" wrapText="true" />
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
+      <Button fx:id="subscribe_button" mnemonicParsing="false" onAction="#subscribe_action" text="subscribe" GridPane.columnIndex="2">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <GridPane.margin>
+            <Insets right="20.0" />
+         </GridPane.margin>
+      </Button>
+   </children>
+</GridPane>

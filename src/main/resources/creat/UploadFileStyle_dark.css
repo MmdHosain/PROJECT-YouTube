@@ -1,0 +1,159 @@
+/*___________________________________PRIVET_________________________________*/
+#uploadVideo_anchorPain {
+    -fx-background-color: linear-gradient(to bottom, rgba(242, 242, 242, 0.95), rgba(222, 179, 179, 0.95));
+    -fx-background-insets: 10;
+    -fx-background-radius: 40;
+    -fx-effect: dropshadow(three-pass-box, #2f2f2f, 8, 0, 4, 4);
+
+}
+
+#help_label {
+    -fx-text-fill: #800000;
+}
+
+#selectFile_button {
+    -fx-background-color: #800000;
+    -fx-text-fill: white;
+}
+
+#selectFile_button:hover {
+    -fx-background-color: #653737;
+}
+
+#close_button {
+    -fx-shape: "M12.7,12l6.6,6.6l-0.7,0.7L12,12.7l-6.6,6.6l-0.7-0.7l6.6-6.6L4.6,5.4l0.7-0.7l6.6,6.6l6.6-6.6l0.7,0.7L12.7,12z";
+    -fx-background-color: black;
+}
+
+#close_button:hover {
+    -fx-background-color: red;
+}
+
+#feedback_button {
+    -fx-shape: "M13,14h-2v-2h2V14z M13,5h-2v6h2V5z M19,3H5v16.59l3.29-3.29L8.59,16H9h10V3 M20,2v15H9l-5,5V2H20L20,2z";
+    -fx-background-color: black;
+}
+
+#feedback_button:hover {
+    -fx-background-color: red;
+}
+
+#refresh_button {
+    -fx-shape: "M22.4,11.65a1.09,1.09,0,0,0,1.09,1.09H34.43V1.81a1.09,1.09,0,1,0-2.19,0V8.95a16.41,16.41,0,1,0,1.47,15.86,1.12,1.12,0,0,0-2.05-.9,14.18,14.18,0,1,1-1.05-13.36H23.5A1.09,1.09,0,0,0,22.4,11.65Z";
+    -fx-background-color: black;
+}
+
+#refresh_button:hover {
+    -fx-background-color: red;
+}
+
+/*____details_scrollPane*/
+#details_scrollPane {
+    -fx-background-color: transparent;
+}
+
+#details_scrollPane .increment-arrow,
+#details_scrollPane .decrement-arrow {
+    -fx-opacity: 0;
+}
+
+#details_scrollPane .viewport {
+    -fx-background-color: transparent;
+}
+
+#details_scrollPane .thumb {
+    -fx-background-color: #800000;
+    -fx-background-radius: 10;
+    -fx-background-insets: 4;
+
+}
+
+#details_scrollPane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: -2;
+}
+
+/*_____________________-*/
+#videoTitle_textField {
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: #838383;
+    -fx-text-fill: #800000;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-border-color: #2f2f2f;
+}
+
+#description_textArea {
+    -fx-control-inner-background: transparent;
+    -fx-background-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-prompt-text-fill: #838383;
+
+    -fx-text-fill: #800000;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-border-color: #2f2f2f;
+}
+
+#selectPlaylist_comboBox {
+    -fx-background-color: transparent;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-border-color: #2f2f2f;
+}
+
+#newPlaylist_button {
+    -fx-background-color: transparent;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-border-color: #2f2f2f;
+}
+
+#newPlaylist_button:hover {
+    -fx-background-color: rgba(51, 51, 51, 0);
+}
+
+#addTag_textArea {
+    -fx-control-inner-background: transparent;
+    -fx-background-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-prompt-text-fill: #838383;
+
+    -fx-text-fill: #800000;
+    -fx-border-width: 1;
+    -fx-border-radius: 10;
+    -fx-border-color: #2f2f2f;
+}
+
+#next_button {
+    -fx-background-color: #800000;
+    -fx-background-radius: 10 0 40 0;
+    -fx-text-fill: white;
+}
+
+#next_button:hover {
+    -fx-background-color: #653737;
+}
+
+#videoTitle_label {
+    -fx-text-fill: #800000;
+}
+
+#upload_button {
+    -fx-background-radius: 0 0 40 0;
+    -fx-background-color: #800000;
+    -fx-text-fill: #f2f2f2f2;
+}
+
+#upload_button:hover {
+    -fx-background-color: #653737;
+}
+#back_button{
+    -fx-background-radius: 40 0 0 0;
+    -fx-background-color: #800000;
+    -fx-text-fill: #f2f2f2f2;
+
+}
+#back_button:hover{
+    -fx-background-color: #653737;
+}
